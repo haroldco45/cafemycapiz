@@ -9,100 +9,138 @@
     <style>
         .capiz-brown { color: #4a3427; }
         .bg-capiz { background-color: #4a3427; }
-        .category-card { 
-            transition: all 0.2s ease;
-            aspect-ratio: 1 / 1;
-        }
+        .category-card { transition: all 0.2s ease; aspect-ratio: 1 / 1; cursor: pointer; }
         .category-card:active { transform: scale(0.95); opacity: 0.8; }
+        .hidden { display: none; }
     </style>
 </head>
-<body class="bg-gray-100 pb-20">
+<body class="bg-gray-100 pb-24">
 
     <header class="bg-white p-6 text-center shadow-sm">
-        <img src="cafe-my-capiz.PNG" alt="Logo Café My Capiz" class="mx-auto w-32 h-auto mb-3">
-        <h1 class="text-2xl font-black capiz-brown tracking-tight uppercase">CAFÉ MY CAPIZ</h1>
-        <div class="h-1 w-16 bg-orange-500 mx-auto mt-2"></div>
+        <img src="cafe-my-capiz.PNG" alt="Logo Café My Capiz" class="mx-auto w-24 h-auto mb-3">
+        <h1 class="text-xl font-black capiz-brown tracking-tight uppercase">CAFÉ MY CAPIZ</h1>
+        <p class="text-[9px] font-bold text-gray-400 uppercase">Parque las Ceibas - Caucasia</p>
     </header>
 
-    <section class="bg-capiz text-white p-4">
-        <div class="text-center space-y-3">
-            <p class="text-xs font-medium"><i class="fas fa-map-marker-alt text-orange-400 mr-1"></i> Parque las Ceibas, Caucasia, Antioquia</p>
-            <div class="flex justify-center gap-3">
-                <a href="https://wa.me/573207907331" class="bg-green-500 hover:bg-green-600 text-white text-xs font-bold py-2 px-4 rounded-full flex items-center">
-                    <i class="fab fa-whatsapp mr-2 text-lg"></i> WHATSAPP
-                </a>
-                <a href="tel:3207907331" class="bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold py-2 px-4 rounded-full flex items-center">
-                    <i class="fas fa-phone-alt mr-2"></i> LLAMAR
-                </a>
+    <section id="view-home" class="view">
+        <div class="bg-capiz text-white p-4 text-center">
+            <p class="text-xs mb-3">¿Qué se te antoja hoy?</p>
+            <div class="flex justify-center gap-2">
+                <a href="https://wa.me/573207907331" class="bg-green-500 text-[10px] font-bold py-2 px-4 rounded-full italic">WHATSAPP [3207907331]</a>
             </div>
         </div>
+
+        <main class="p-4 grid grid-cols-2 gap-4">
+            <div onclick="showCategory('BRUNCH')" class="category-card bg-white rounded-3xl shadow-md flex flex-col items-center justify-center p-4 border-b-8 border-orange-500">
+                <i class="fas fa-utensils text-3xl text-orange-500 mb-2"></i>
+                <span class="font-black text-gray-800 text-xs uppercase">BRUNCH</span>
+            </div>
+            <div onclick="showCategory('WAFFLES')" class="category-card bg-white rounded-3xl shadow-md flex flex-col items-center justify-center p-4 border-b-8 border-yellow-500">
+                <i class="fas fa-stroopwafel text-3xl text-yellow-500 mb-2"></i>
+                <span class="font-black text-gray-800 text-xs uppercase">WAFFLES</span>
+            </div>
+            <div onclick="showCategory('BEBIDAS')" class="category-card bg-white rounded-3xl shadow-md flex flex-col items-center justify-center p-4 border-b-8 border-blue-400">
+                <i class="fas fa-glass-whiskey text-3xl text-blue-400 mb-2"></i>
+                <span class="font-black text-gray-800 text-xs uppercase">BEBIDAS</span>
+            </div>
+            <div onclick="showCategory('OTROS')" class="category-card bg-white rounded-3xl shadow-md flex flex-col items-center justify-center p-4 border-b-8 border-red-500">
+                <i class="fas fa-plus-circle text-3xl text-red-500 mb-2"></i>
+                <span class="font-black text-gray-800 text-xs uppercase">MÁS</span>
+            </div>
+        </main>
     </section>
 
-    <main class="p-4 grid grid-cols-2 gap-4">
-        
-        <div class="category-card bg-white rounded-3xl shadow-md flex flex-col items-center justify-center p-4 border-b-8 border-orange-500">
-            <div class="bg-orange-100 p-4 rounded-2xl mb-2">
-                <i class="fas fa-coffee text-3xl text-orange-600"></i>
+    <section id="view-menu" class="view hidden p-4">
+        <button onclick="showView('home')" class="mb-4 text-orange-600 font-bold flex items-center gap-2">
+            <i class="fas fa-arrow-left"></i> VOLVER
+        </button>
+        <h2 id="category-title" class="text-xl font-black mb-4 uppercase capiz-brown"></h2>
+        <div id="product-list" class="space-y-3">
             </div>
-            <span class="font-black text-gray-800 text-sm uppercase">Cafetería</span>
+    </section>
+
+    <section id="view-orders" class="view hidden p-10 text-center">
+        <i class="fas fa-shopping-bag text-5xl text-gray-300 mb-4"></i>
+        <h2 class="text-xl font-bold text-gray-700">Tus Pedidos</h2>
+        <p class="text-gray-500 text-sm mt-2">Aún no tienes pedidos activos en Caucasia.</p>
+    </section>
+
+    <section id="view-account" class="view hidden p-10 text-center">
+        <div class="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <i class="fas fa-user text-3xl text-gray-400"></i>
         </div>
+        <h2 class="text-xl font-bold text-gray-700">Mi Perfil</h2>
+        <p class="text-gray-500 text-sm mb-6">Gestiona tu información</p>
+        <button class="w-full bg-white p-3 rounded-xl shadow-sm text-left mb-2 font-bold text-sm italic">MIS DIRECCIONES</button>
+        <button class="w-full bg-white p-3 rounded-xl shadow-sm text-left font-bold text-sm italic">CERRAR SESIÓN</button>
+    </section>
 
-        <div class="category-card bg-white rounded-3xl shadow-md flex flex-col items-center justify-center p-4 border-b-8 border-brown-700">
-            <div class="bg-amber-100 p-4 rounded-2xl mb-2">
-                <i class="fas fa-utensils text-3xl text-amber-800"></i>
-            </div>
-            <span class="font-black text-gray-800 text-sm uppercase">Brunch</span>
-        </div>
-
-        <div class="category-card bg-white rounded-3xl shadow-md flex flex-col items-center justify-center p-4 border-b-8 border-yellow-400">
-            <div class="bg-yellow-100 p-4 rounded-2xl mb-2">
-                <i class="fas fa-stroopwafel text-3xl text-yellow-600"></i>
-            </div>
-            <span class="font-black text-gray-800 text-sm uppercase">Waffles</span>
-        </div>
-
-        <div class="category-card bg-white rounded-3xl shadow-md flex flex-col items-center justify-center p-4 border-b-8 border-red-500">
-            <div class="bg-red-100 p-4 rounded-2xl mb-2">
-                <i class="fas fa-hamburger text-3xl text-red-600"></i>
-            </div>
-            <span class="font-black text-gray-800 text-sm uppercase">Fuertes</span>
-        </div>
-
-        <div class="category-card bg-white rounded-3xl shadow-md flex flex-col items-center justify-center p-4 border-b-8 border-blue-400">
-            <div class="bg-blue-100 p-4 rounded-2xl mb-2">
-                <i class="fas fa-glass-whiskey text-3xl text-blue-500"></i>
-            </div>
-            <span class="font-black text-gray-800 text-sm uppercase">Bebidas</span>
-        </div>
-
-        <div class="category-card bg-white rounded-3xl shadow-md flex flex-col items-center justify-center p-4 border-b-8 border-pink-400">
-            <div class="bg-pink-100 p-4 rounded-2xl mb-2">
-                <i class="fas fa-birthday-cake text-3xl text-pink-500"></i>
-            </div>
-            <span class="font-black text-gray-800 text-sm uppercase">Postres</span>
-        </div>
-
-    </main>
-
-    <footer class="mt-4 mb-10 text-center">
-        <p class="text-[10px] font-bold text-gray-400 tracking-tighter uppercase">Esta App es desarrollada por</p>
-        <p class="text-xs font-black capiz-brown tracking-widest uppercase">VIBRAS POSITIVAS</p>
+    <footer class="text-center py-4">
+        <p class="text-[9px] text-gray-400 font-bold uppercase tracking-tighter">Desarrollada por VIBRAS POSITIVAS</p>
     </footer>
 
-    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around p-3 shadow-lg z-50">
-        <div class="flex flex-col items-center text-orange-600">
-            <i class="fas fa-th-large text-xl"></i>
-            <span class="text-[9px] font-bold mt-1">INICIO</span>
-        </div>
-        <div class="flex flex-col items-center text-gray-400">
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around p-3 shadow-lg z-50">
+        <button onclick="showView('home')" class="nav-btn flex flex-col items-center text-orange-600">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-[9px] font-bold">INICIO</span>
+        </button>
+        <button onclick="showView('orders')" class="nav-btn flex flex-col items-center text-gray-400">
             <i class="fas fa-shopping-bag text-xl"></i>
-            <span class="text-[9px] font-bold mt-1">PEDIDOS</span>
-        </div>
-        <div class="flex flex-col items-center text-gray-400">
+            <span class="text-[9px] font-bold">PEDIDOS</span>
+        </button>
+        <button onclick="showView('account')" class="nav-btn flex flex-col items-center text-gray-400">
             <i class="fas fa-user-circle text-xl"></i>
-            <span class="text-[9px] font-bold mt-1">CUENTA</span>
-        </div>
+            <span class="text-[9px] font-bold">CUENTA</span>
+        </button>
     </nav>
 
+    <script>
+        // Datos extraídos del PDF para que la app sea real
+        const menuData = {
+            'BRUNCH': [
+                {n: 'Desayuno Capiz', p: '21.900', d: 'Huevos con jamón, salchicha, arepa y aguacate.'},
+                {n: 'Sartén Mexicano', p: '23.000', d: 'Salsa napolitana, queso mozarela y pan tostado.'},
+                {n: 'Calentado con chicharrón', p: '25.000', d: 'Especial de la casa con el mejor sabor.'}
+            ],
+            'WAFFLES': [
+                {n: 'Waffle Nutella', p: '22.000', d: 'Relleno de Nutella y helado.'},
+                {n: 'Waffle de Pan de Bono', p: '22.000', d: 'Textura única y deliciosa.'},
+                {n: 'Waffle de Chócolo', p: '25.000', d: 'Con queso costeño y parmesano.'}
+            ],
+            'BEBIDAS': [
+                {n: 'Malteada de Oreo', p: '17.000', d: 'Cremosa con trozos de galleta.'},
+                {n: 'Limonada de Coco', p: '15.000', d: 'Refrescante y tropical.'},
+                {n: 'Capuchino Baileys', p: '17.000', d: 'Café intenso con toque de licor.'}
+            ]
+        };
+
+        function showView(viewId) {
+            document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
+            document.getElementById('view-' + viewId).classList.remove('hidden');
+        }
+
+        function showCategory(cat) {
+            showView('menu');
+            document.getElementById('category-title').innerText = cat;
+            const container = document.getElementById('product-list');
+            container.innerHTML = '';
+            
+            const items = menuData[cat] || [];
+            items.forEach(item => {
+                container.innerHTML += `
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border-r-4 border-orange-500 flex justify-between items-center">
+                        <div>
+                            <h4 class="font-black text-sm text-gray-800 uppercase">${item.n} [cite: 532, 682, 705]</h4>
+                            <p class="text-[10px] text-gray-500">${item.d} [cite: 681, 714, 912]</p>
+                            <span class="capiz-brown font-black text-sm mt-1 block">$${item.p} [cite: 556, 677, 682]</span>
+                        </div>
+                        <button class="bg-orange-500 text-white p-2 rounded-full h-8 w-8 flex items-center justify-center">
+                            <i class="fas fa-plus text-xs"></i>
+                        </button>
+                    </div>
+                `;
+            });
+        }
+    </script>
 </body>
 </html>
