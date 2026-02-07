@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café My Capiz - App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --color-capiz: #4a3427; /* Tono café para la marca */
+        }
+        .bg-capiz { background-color: var(--color-capiz); }
+        .text-capiz { color: var(--color-capiz); }
+        .category-card:active { transform: scale(0.95); }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50 p-4 text-center">
+        <img src="cafe-my-capiz.PNG" alt="Logo Café My Capiz" class="mx-auto h-20 mb-2">
+        <p class="text-xs font-bold text-green-600 uppercase tracking-widest">Vibras Positivas</p>
+    </header>
+
+    <section class="p-4 bg-capiz text-white text-center">
+        <h1 class="text-xl font-bold">CAFÉ MY CAPIZ</h1>
+        <p class="text-sm"><i class="fas fa-map-marker-alt"></i> Parque las Ceibas, Caucasia, Antioquia</p>
+        <a href="https://wa.me/573207907331" class="inline-block mt-3 bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-bold transition">
+            <i class="fab fa-whatsapp"></i> Pide aquí: 3207907331
+        </a>
+    </section>
+
+    <main class="p-4 grid grid-cols-2 gap-4">
+        
+        <div class="category-card bg-white p-6 rounded-2xl shadow-md text-center border-b-4 border-amber-800 cursor-pointer">
+            <i class="fas fa-coffee text-3xl text-capiz mb-2"></i>
+            <h2 class="font-bold text-gray-800">Especialidad Café</h2>
+            <p class="text-xs text-gray-500">Capuchinos y más</p>
+        </div>
+
+        <div class="category-card bg-white p-6 rounded-2xl shadow-md text-center border-b-4 border-orange-500 cursor-pointer">
+            <i class="fas fa-egg text-3xl text-orange-500 mb-2"></i>
+            <h2 class="font-bold text-gray-800">Brunch</h2>
+            <p class="text-xs text-gray-500">Desayunos y Sartenes</p>
+        </div>
+
+        <div class="category-card bg-white p-6 rounded-2xl shadow-md text-center border-b-4 border-yellow-400 cursor-pointer">
+            <i class="fas fa-stroopwafel text-3xl text-yellow-500 mb-2"></i>
+            <h2 class="font-bold text-gray-800">Waffles</h2>
+            <p class="text-xs text-gray-500">Dulces y Salados</p>
+        </div>
+
+        <div class="category-card bg-white p-6 rounded-2xl shadow-md text-center border-b-4 border-amber-600 cursor-pointer">
+            <i class="fas fa-bread-slice text-3xl text-amber-600 mb-2"></i>
+            <h2 class="font-bold text-gray-800">Panadería</h2>
+            <p class="text-xs text-gray-500">Deditos y Croissants</p>
+        </div>
+
+        <div class="category-card bg-white p-6 rounded-2xl shadow-md text-center border-b-4 border-blue-400 cursor-pointer">
+            <i class="fas fa-ice-cream text-3xl text-blue-400 mb-2"></i>
+            <h2 class="font-bold text-gray-800">Bebidas Frías</h2>
+            <p class="text-xs text-gray-500">Malteadas y Jugos</p>
+        </div>
+
+        <div class="category-card bg-white p-6 rounded-2xl shadow-md text-center border-b-4 border-red-600 cursor-pointer">
+            <i class="fas fa-utensils text-3xl text-red-600 mb-2"></i>
+            <h2 class="font-bold text-gray-800">Cenas</h2>
+            <p class="text-xs text-gray-500">Lasañas y Alitas</p>
+        </div>
+
+    </main>
+
+    <footer class="fixed bottom-0 w-full bg-white border-t border-gray-200 p-2 grid grid-cols-3 text-center text-gray-500 shadow-lg">
+        <div class="text-capiz">
+            <i class="fas fa-home block text-xl"></i>
+            <span class="text-[10px] font-bold">Inicio</span>
+        </div>
+        <div>
+            <i class="fas fa-shopping-basket block text-xl"></i>
+            <span class="text-[10px] font-bold">Pedido</span>
+        </div>
+        <div>
+            <i class="fas fa-user block text-xl"></i>
+            <span class="text-[10px] font-bold">Perfil</span>
+        </div>
+    </footer>
+
+</body>
+</html>
