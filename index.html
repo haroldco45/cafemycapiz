@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café My Capiz | App Oficial</title>
+    <title>Café My Capiz | App</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -12,148 +12,148 @@
         .view { min-height: 85vh; }
         .hidden { display: none; }
         .category-card { transition: all 0.2s ease; cursor: pointer; aspect-ratio: 1/1; }
-        .category-card:active { transform: scale(0.95); }
     </style>
 </head>
 <body class="bg-gray-100 pb-32 font-sans">
 
-    <header class="bg-white p-4 text-center shadow-sm sticky top-0 z-50">
-        <img src="cafe-my-capiz.PNG" alt="Logo" class="mx-auto w-16 mb-1">
-        <h1 class="text-base font-black capiz-brown uppercase">CAFÉ MY CAPIZ</h1>
-        <p class="text-[7px] font-bold text-gray-400 uppercase tracking-widest">Desarrollado por VIBRAS POSITIVAS</p>
-    </header>
-
-    <section id="view-user" class="view p-6">
-        <div class="bg-white p-6 rounded-[2rem] shadow-xl border-t-8 border-orange-500">
-            <h2 id="user-title" class="text-xl font-black mb-4 capiz-brown italic uppercase text-center">Datos de Envío</h2>
-            <div class="space-y-4">
-                <input type="text" id="name" placeholder="Tu Nombre" class="w-full p-3 bg-gray-50 rounded-xl ring-1 ring-gray-200 outline-none focus:ring-orange-500">
-                <input type="text" id="address" placeholder="Dirección en Caucasia" class="w-full p-3 bg-gray-50 rounded-xl ring-1 ring-gray-200 outline-none focus:ring-orange-500">
-                <input type="tel" id="phone" placeholder="Celular" class="w-full p-3 bg-gray-50 rounded-xl ring-1 ring-gray-200 outline-none focus:ring-orange-500">
-                <button onclick="saveUser()" class="w-full bg-orange-600 text-white font-black py-4 rounded-xl shadow-lg mt-4 uppercase">Entrar al Menú</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="view-home" class="view hidden">
-        <div class="bg-capiz text-white p-3 flex justify-between items-center px-6 shadow-md">
-            <div class="text-left">
-                <p class="text-[8px] opacity-70 italic font-bold uppercase tracking-tighter">Enviando a:</p>
-                <p id="label-address" class="text-[10px] font-black truncate max-w-[150px]"></p>
-            </div>
-            <button onclick="editUser()" class="text-[10px] bg-orange-500 text-white px-4 py-1.5 rounded-full font-black uppercase shadow-md border border-white">
-                <i class="fas fa-edit"></i> Editar Datos
-            </button>
-        </div>
-
-        <div class="p-4 grid grid-cols-2 gap-4">
-            <div onclick="showCat('CAFETERÍA')" class="category-card bg-white rounded-3xl p-5 shadow-md border-b-8 border-orange-500 flex flex-col justify-center items-center text-center">
-                <i class="fas fa-coffee text-3xl text-orange-500 mb-2"></i>
-                <span class="font-black text-[10px] uppercase">Cafetería</span>
-            </div>
-            <div onclick="showCat('BRUNCH')" class="category-card bg-white rounded-3xl p-5 shadow-md border-b-8 border-amber-800 flex flex-col justify-center items-center text-center">
-                <i class="fas fa-utensils text-3xl text-amber-800 mb-2"></i>
-                <span class="font-black text-[10px] uppercase">Brunch</span>
-            </div>
-            <div onclick="showCat('WAFFLES')" class="category-card bg-white rounded-3xl p-5 shadow-md border-b-8 border-yellow-400 flex flex-col justify-center items-center text-center">
-                <i class="fas fa-stroopwafel text-3xl text-yellow-500 mb-2"></i>
-                <span class="font-black text-[10px] uppercase">Waffles</span>
-            </div>
-            <div onclick="showCat('BEBIDAS FRÍAS')" class="category-card bg-white rounded-3xl p-5 shadow-md border-b-8 border-blue-400 flex flex-col justify-center items-center text-center">
-                <i class="fas fa-ice-cream text-3xl text-blue-500 mb-2"></i>
-                <span class="font-black text-[10px] uppercase">Frías</span>
-            </div>
-            <div onclick="showCat('PLATOS FUERTES')" class="category-card bg-white rounded-3xl p-5 shadow-md border-b-8 border-red-600 flex flex-col justify-center items-center text-center">
-                <i class="fas fa-pizza-slice text-3xl text-red-600 mb-2"></i>
-                <span class="font-black text-[10px] uppercase">Fuertes</span>
-            </div>
-            <div onclick="showCat('LICORES')" class="category-card bg-white rounded-3xl p-5 shadow-md border-b-8 border-purple-600 flex flex-col justify-center items-center text-center">
-                <i class="fas fa-wine-glass text-3xl text-purple-600 mb-2"></i>
-                <span class="font-black text-[10px] uppercase">Licores</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="view-menu" class="view hidden p-4">
-        <button onclick="showView('home')" class="text-orange-600 font-black text-xs mb-4 uppercase flex items-center gap-1">
-            <i class="fas fa-arrow-left"></i> Volver
-        </button>
-        <h2 id="cat-title" class="text-lg font-black capiz-brown mb-4 uppercase italic"></h2>
-        <textarea id="notes" placeholder="Notas: Ej. Té sin azúcar, huevos bien cocidos..." class="w-full p-3 text-xs bg-white rounded-2xl mb-4 h-16 outline-none ring-1 ring-gray-100 shadow-sm"></textarea>
-        <div id="p-list" class="space-y-3"></div>
-    </section>
-
-    <div id="cart" class="fixed bottom-20 left-4 right-4 bg-orange-600 text-white p-4 rounded-2xl shadow-2xl flex justify-between items-center hidden z-50">
-        <div class="flex items-center gap-2">
-            <div class="bg-white text-orange-600 h-8 w-8 flex items-center justify-center rounded-full font-black text-xs" id="c-qty">0</div>
-            <span class="text-[9px] font-bold">PRODUCTOS</span>
-        </div>
-        <div class="text-right">
-            <p id="c-total" class="text-xl font-black">$0</p>
-            <button onclick="sendWhatsApp()" class="text-[9px] font-black uppercase bg-black bg-opacity-20 px-3 py-1 rounded-full">Confirmar</button>
-        </div>
+    <div id="lock-screen" class="fixed inset-0 bg-white z-[100] flex flex-col items-center justify-center p-10 text-center hidden">
+        <i class="fas fa-tools text-6xl text-gray-300 mb-4"></i>
+        <h2 class="text-xl font-black capiz-brown uppercase">Servicio Temporalmente Suspendido</h2>
+        <p class="text-sm text-gray-500 mt-2">Para reactivar su menú digital, por favor contacte a su proveedor tecnológico:</p>
+        <p class="font-bold mt-4 text-orange-600 uppercase tracking-widest text-xs">Desarrollado por VIBRAS POSITIVAS</p>
     </div>
 
-    <nav class="fixed bottom-0 w-full bg-white border-t flex justify-around p-3 z-50 shadow-lg">
-        <button onclick="showView('home')" class="text-orange-600 flex flex-col items-center">
-            <i class="fas fa-home text-lg"></i><span class="text-[8px] font-bold mt-1 uppercase">Inicio</span>
-        </button>
-        <button onclick="sendWhatsApp()" class="text-gray-400 flex flex-col items-center">
-            <i class="fab fa-whatsapp text-lg"></i><span class="text-[8px] font-bold mt-1 uppercase">Pedir</span>
-        </button>
-    </nav>
+    <div id="app-content">
+        <header class="bg-white p-4 text-center shadow-sm sticky top-0 z-50">
+            <img src="cafe-my-capiz.PNG" alt="Logo" class="mx-auto w-16 mb-1">
+            <h1 class="text-base font-black capiz-brown uppercase">CAFÉ MY CAPIZ</h1>
+            <p class="text-[7px] font-bold text-gray-400 uppercase tracking-widest">Desarrollado por VIBRAS POSITIVAS</p>
+        </header>
+
+        <section id="view-user" class="view p-6">
+            <div class="bg-white p-6 rounded-[2rem] shadow-xl border-t-8 border-orange-500 text-center">
+                <h2 class="text-xl font-black mb-4 capiz-brown italic uppercase">Datos de Entrega</h2>
+                <div class="space-y-4">
+                    <input type="text" id="name" placeholder="Tu Nombre" class="w-full p-3 bg-gray-50 rounded-xl ring-1 ring-gray-100 outline-none">
+                    <input type="text" id="address" placeholder="Dirección en Caucasia" class="w-full p-3 bg-gray-50 rounded-xl ring-1 ring-gray-100 outline-none">
+                    <input type="tel" id="phone" placeholder="Celular" class="w-full p-3 bg-gray-50 rounded-xl ring-1 ring-gray-100 outline-none">
+                    <button onclick="saveUser()" class="w-full bg-orange-600 text-white font-black py-4 rounded-xl shadow-lg mt-4 uppercase">Ver Menú Completo</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-home" class="view hidden">
+            <div class="bg-capiz text-white p-3 flex justify-between items-center px-6">
+                <p id="label-address" class="text-[10px] font-black"></p>
+                <button onclick="editUser()" class="text-[9px] bg-orange-500 text-white px-3 py-1 rounded-full font-black uppercase italic">Editar</button>
+            </div>
+            <div class="p-4 grid grid-cols-2 gap-4" id="categories-grid">
+                </div>
+        </section>
+
+        <section id="view-menu" class="view hidden p-4">
+            <button onclick="showView('home')" class="text-orange-600 font-black text-xs uppercase mb-4"><i class="fas fa-arrow-left"></i> Volver</button>
+            <h2 id="cat-title" class="text-lg font-black capiz-brown mb-4 uppercase italic"></h2>
+            <textarea id="notes" placeholder="¿Cómo quieres tu pedido?" class="w-full p-4 text-xs bg-white rounded-2xl mb-4 h-16 outline-none ring-1 ring-gray-100 shadow-sm"></textarea>
+            <div id="p-list" class="space-y-3"></div>
+        </section>
+
+        <div id="cart" class="fixed bottom-20 left-4 right-4 bg-orange-600 text-white p-4 rounded-2xl shadow-2xl flex justify-between items-center hidden z-50">
+            <div id="c-qty" class="font-black">0</div>
+            <p id="c-total" class="text-xl font-black">$0</p>
+            <button onclick="sendWhatsApp()" class="text-[9px] font-black uppercase bg-black bg-opacity-20 px-3 py-1 rounded-full">Pedir</button>
+        </div>
+
+        <nav class="fixed bottom-0 w-full bg-white border-t flex justify-around p-3 z-50">
+            <button onclick="showView('home')" class="text-orange-600 flex flex-col items-center">
+                <i class="fas fa-home text-xl"></i><span class="text-[8px] font-black uppercase">Inicio</span>
+            </button>
+            <button onclick="sendWhatsApp()" class="text-gray-400 flex flex-col items-center">
+                <i class="fab fa-whatsapp text-xl"></i><span class="text-[8px] font-black uppercase">Pedir</span>
+            </button>
+        </nav>
+    </div>
 
     <script>
+        // ==========================================
+        // CONTROL DE SUSCRIPCIÓN - VIBRAS POSITIVAS
+        // ==========================================
+        const FECHA_VENCIMIENTO = "2026-03-15"; // FORMATO: AAAA-MM-DD
+        
+        function checkSubscription() {
+            const hoy = new Date();
+            const vencimiento = new Date(FECHA_VENCIMIENTO);
+            if (hoy > vencimiento) {
+                document.getElementById('app-content').classList.add('hidden');
+                document.getElementById('lock-screen').classList.remove('hidden');
+            }
+        }
+        checkSubscription();
+
         const menu = {
             'CAFETERÍA': [
-                {id:1, n:'Capuchino Baileys', p:17000, d:'Café espresso, leche cremada y crema whiskey'},
-                {id:2, n:'Café Latte', p:11000, d:'Espresso con leche cremosa'},
-                {id:3, n:'Aromática Frutos Rojos', p:8000, d:'Natural con flor de Jamaica y frutas'},
-                {id:4, n:'Mocachino', p:13000, d:'Café, chocolate y leche'},
-                {id:5, n:'Café Campesino', p:7500, d:'Espresso con aguapanela'},
-                {id:6, n:'Chocolate con Leche', p:6000, d:'Artesanal y cremoso'}
+                {id:1, n:'Capuchino con Baileys', p:17000, d:'Café espresso, leche y crema whiskey'},
+                {id:2, n:'Latte Machiato Carame', p:17000, d:'Esencia de caramelo gourmet'},
+                {id:3, n:'Café Latte', p:11000, d:'Espresso con leche cremada'},
+                {id:4, n:'Aromática Frutos Rojos', p:8000, d:'Fresa, mora y flor de jamaica'},
+                {id:5, n:'Café Campesino', p:7500, d:'Con aguapanela'},
+                {id:6, n:'Té Chai', p:12400, d:'Especiado caliente'}
             ],
             'BRUNCH': [
-                {id:10, n:'Desayuno Capiz', p:21900, d:'Huevos, jamón, salchicha, arepa y aguacate'},
-                {id:11, n:'Calentado con Chicharrón', p:25000, d:'Especial de la casa con arroz y frijol'},
-                {id:12, n:'Sartén Mexicano', p:23000, d:'Napolitana, jalapeño, queso y pan masa madre'},
-                {id:13, n:'Pancakes Tradicionales', p:19500, d:'Huevos, queso, frutas y miel'}
+                {id:10, n:'Calentado con Chicharrón', p:25000, d:'Arroz, frijol y chicharrón crocante'},
+                {id:11, n:'Desayuno Capiz', p:21900, d:'Huevos, jamón, salchicha, arepa y aguacate'},
+                {id:12, n:'Sartén Mexicano', p:23000, d:'Napolitana, jalapeño y queso'},
+                {id:13, n:'Bowl Cabeza de Gato', p:22000, d:'Queso asado, chicharrón y suero'}
             ],
             'WAFFLES': [
-                {id:20, n:'Waffle Nutella Capiz', p:22000, d:'Helado de vainilla, nutella y fresas'},
+                {id:20, n:'Waffle Nutella Capiz', p:22000, d:'Helado, Nutella y fresas'},
                 {id:21, n:'Waffle de Pan de Bono', p:22000, d:'Masa horneada, textura única'},
-                {id:22, n:'Waffle de Chócolo', p:25000, d:'2 huevos fritos, tocineta y queso costeño'},
-                {id:23, n:'Waffle Primavera', p:23000, d:'Frutas, helado y salsa de chocolate'},
-                {id:24, n:'Waffle de Buñuelo', p:27000, d:'Tocineta, huevos fritos y mermelada'}
+                {id:22, n:'Waffle de Chócolo', p:25000, d:'2 huevos fritos, tocineta y queso'},
+                {id:23, n:'Waffle Primavera', p:23000, d:'Frutas, helado y chocolate'},
+                {id:24, n:'Waffle de Buñuelo', p:27000, d:'2 huevos fritos y tocineta'}
             ],
-            'BEBIDAS FRÍAS': [
-                {id:30, n:'Limonada de Coco', p:15000, d:'Natural y refrescante'},
-                {id:31, n:'Malteada Oreo', p:17000, d:'Frappé con trozos de galleta'},
-                {id:32, n:'Granizado de Café', p:15000, d:'Café helado cremoso'},
-                {id:33, n:'Soda Frutos Rojos', p:17000, d:'Burbujeante y natural'}
+            'FRÍAS': [
+                {id:30, n:'Malteada de Oreo', p:17000, d:'Frappé con galleta'},
+                {id:31, n:'Limonada de Coco', p:15000, d:'Natural y cremosa'},
+                {id:32, n:'Granizado de Café', p:15000, d:'Intenso frappé'}
             ],
-            'PLATOS FUERTES': [
-                {id:40, n:'Lasaña de Carne', p:32000, d:'Artesanal con mucho queso'},
-                {id:41, n:'Combo Alitas x16', p:48000, d:'Salsa a elección y papas'},
-                {id:42, n:'Pechuga al Ajillo', p:35000, d:'Con patacones y ensalada'},
-                {id:43, n:'Cañón de Cerdo', p:32000, d:'Papas al vapor y ensalada tropical'}
+            'FUERTES': [
+                {id:40, n:'Lasaña de Carne', p:32000, d:'Mucho queso mozarela'},
+                {id:41, n:'Combo Alitas x16', p:48000, d:'Papas francesas y salsa'},
+                {id:42, n:'Pechuga al Ajillo', p:35000, d:'Patacones y ensalada'}
             ],
             'LICORES': [
-                {id:50, n:'Vino de Corozo Capiz', p:55000, d:'Artesanal local'},
-                {id:51, n:'Copa Vino Tinto', p:17000, d:'Vino de la casa'},
-                {id:52, n:'Cerveza Heineken', p:7000, d:'Fría'}
+                {id:50, n:'Vino de Corozo Capiz', p:55000, d:'Botella artesanal'},
+                {id:51, n:'Copa Vino Tinto', p:17000, d:'De la casa'}
             ]
         };
 
         let cart = {};
-        let user = JSON.parse(localStorage.getItem('capiz_final'));
+        let user = JSON.parse(localStorage.getItem('capiz_data_v2'));
 
         window.onload = () => {
-            if(user) { 
-                showView('home'); 
-                document.getElementById('label-address').innerText = user.address;
-            }
+            checkSubscription();
+            renderCategories();
+            if(user) { showView('home'); document.getElementById('label-address').innerText = user.address; }
         };
+
+        function renderCategories() {
+            const grid = document.getElementById('categories-grid');
+            const cats = [
+                {n:'CAFETERÍA', i:'fa-coffee', c:'orange-500'},
+                {n:'BRUNCH', i:'fa-utensils', c:'amber-700'},
+                {n:'WAFFLES', i:'fa-stroopwafel', c:'yellow-400'},
+                {n:'FRÍAS', i:'fa-ice-cream', c:'blue-400'},
+                {n:'FUERTES', i:'fa-pizza-slice', c:'red-600'},
+                {n:'LICORES', i:'fa-wine-glass', c:'purple-600'}
+            ];
+            grid.innerHTML = cats.map(c => `
+                <div onclick="showCat('${c.n}')" class="category-card bg-white rounded-3xl p-5 shadow-md border-b-8 border-${c.c} flex flex-col justify-center items-center text-center">
+                    <i class="fas ${c.i} text-3xl text-${c.c} mb-2"></i>
+                    <span class="font-black text-[10px] uppercase">${c.n}</span>
+                </div>
+            `).join('');
+        }
 
         function showView(id) {
             ['user','home','menu'].forEach(v => document.getElementById('view-'+v).classList.add('hidden'));
@@ -163,9 +163,9 @@
 
         function saveUser() {
             const n = document.getElementById('name').value, a = document.getElementById('address').value, p = document.getElementById('phone').value;
-            if(!n || !a || !p) return alert("Socio, por favor llena todos los datos de envío.");
+            if(!n || !a || !p) return alert("Llena tus datos de entrega");
             user = {name:n, address:a, phone:p};
-            localStorage.setItem('capiz_final', JSON.stringify(user));
+            localStorage.setItem('capiz_data_v2', JSON.stringify(user));
             document.getElementById('label-address').innerText = a;
             showView('home');
         }
@@ -181,45 +181,39 @@
             showView('menu');
             document.getElementById('cat-title').innerText = c;
             const list = document.getElementById('p-list');
-            list.innerHTML = '';
-            
-            // Lógica para que encuentre la categoría ignorando emojis
-            const items = menu[c] || [];
-            items.forEach(i => {
+            list.innerHTML = menu[c].map(i => {
                 const q = cart[i.id] ? cart[i.id].q : 0;
-                list.innerHTML += `<div class="bg-white p-4 rounded-[2rem] flex justify-between items-center shadow-sm border-l-8 border-orange-500">
-                    <div class="flex-1 pr-2"><h4 class="font-bold text-[11px] uppercase">${i.n}</h4><p class="text-[8px] text-gray-400 my-1 leading-tight">${i.d}</p><span class="font-black text-orange-600 text-xs">$${i.p.toLocaleString()}</span></div>
-                    <div class="flex items-center gap-2 bg-gray-50 p-1.5 rounded-full ring-1 ring-gray-100 shadow-inner">
-                        <button onclick="upd(${i.id},-1,'${i.n}',${i.p})" class="w-8 h-8 bg-white rounded-full shadow text-xs font-bold">-</button>
-                        <span id="q-${i.id}" class="text-xs font-black w-4 text-center">${q}</span>
-                        <button onclick="upd(${i.id},1,'${i.n}',${i.p})" class="w-8 h-8 bg-orange-500 text-white rounded-full shadow text-xs font-bold">+</button>
-                    </div>
-                </div>`;
-            });
+                return `
+                    <div class="bg-white p-4 rounded-[2rem] flex justify-between items-center shadow-sm border-l-8 border-orange-500">
+                        <div class="flex-1 pr-2"><h4 class="font-bold text-[11px] uppercase">${i.n}</h4><p class="text-[8px] text-gray-400 my-1">${i.d}</p><span class="font-black text-orange-600 text-xs">$${i.p.toLocaleString()}</span></div>
+                        <div class="flex items-center gap-2 bg-gray-50 p-1 rounded-full shadow-inner">
+                            <button onclick="upd(${i.id},-1,'${i.n}',${i.p})" class="w-8 h-8 bg-white rounded-full shadow text-xs font-bold">-</button>
+                            <span id="q-${i.id}" class="text-xs font-black w-4 text-center">${q}</span>
+                            <button onclick="upd(${i.id},1,'${i.n}',${i.p})" class="w-8 h-8 bg-orange-500 text-white rounded-full shadow text-xs font-bold">+</button>
+                        </div>
+                    </div>`;
+            }).join('');
         }
 
         function upd(id, ch, n, p) {
             if(!cart[id]) cart[id] = {q:0, n:n, p:p};
             cart[id].q += ch; if(cart[id].q < 0) cart[id].q = 0;
             if(document.getElementById('q-' + id)) document.getElementById('q-' + id).innerText = cart[id].q;
-            
             let tot = 0, q = 0;
             for(let k in cart) { tot += cart[k].q * cart[k].p; q += cart[k].q; }
             document.getElementById('cart').classList.toggle('hidden', q === 0);
-            document.getElementById('c-qty').innerText = q;
+            document.getElementById('c-qty').innerText = q + " PRODUCTOS";
             document.getElementById('c-total').innerText = '$' + tot.toLocaleString();
         }
 
         function sendWhatsApp() {
             let tot = 0; for(let k in cart) { tot += cart[k].q * cart[k].p; }
-            if(tot === 0) return alert("Socio, el carrito está vacío.");
-            
+            if(tot === 0) return alert("El carrito está vacío");
             const nt = document.getElementById('notes').value;
-            let m = `*NUEVO PEDIDO - CAFÉ MY CAPIZ*\n👤 *Cliente:* ${user.name}\n📍 *Dirección:* ${user.address}\n📞 *Cel:* ${user.phone}\n\n`;
+            let m = `*NUEVO PEDIDO - CAFÉ MY CAPIZ*\n👤 *Cliente:* ${user.name}\n📍 *Dir:* ${user.address}\n\n`;
             for(let k in cart) { if(cart[k].q > 0) { m += `• ${cart[k].q}x ${cart[k].n} ($${(cart[k].q * cart[k].p).toLocaleString()})\n`; } }
-            m += `\n📝 *Notas:* ${nt || 'Sin notas'}\n💰 *TOTAL A PAGAR: $${tot.toLocaleString()}*`;
-            
-            window.location.href = `https://wa.me/573117700431?text=${encodeURIComponent(m)}`;
+            m += `\n📝 *Notas:* ${nt || 'Sin notas'}\n💰 *TOTAL: $${tot.toLocaleString()}*`;
+            window.location.href = `https://wa.me/573207907331?text=${encodeURIComponent(m)}`;
         }
     </script>
 </body>
